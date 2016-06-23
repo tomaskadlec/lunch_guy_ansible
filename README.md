@@ -82,3 +82,14 @@ Changes in configuration are necessary. Application will fail otherwise. Use
 Configuration file must be provided if no such exists. Allow its reuse using
 [template](http://docs.ansible.com/ansible/template_module.html) module. File 
 should be located at ``templates/nginx_app.conf``.
+
+## Deploy application
+
+Deploy [Obedar]() a PHP application for retrieving lunch menus in Dejvice, Prague, 
+The Czech Republic. Following steps must be taken:
+
+  * checkout source code from git VCS,
+  * provide configuration,
+  * run ``composer install``,
+  * set as current version if everything goes well.
+
