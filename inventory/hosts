@@ -1,0 +1,6 @@
+web ansible_ssh_host=onevm-120.servers.ict.fit.cvut.cz
+
+[all:vars]
+ansible_user=root
+ansible_ssh_user=root
+ansible_python_interpreter=/usr/bin/python2.7
