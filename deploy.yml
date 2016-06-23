@@ -89,3 +89,34 @@
       repo: "{{app.repo}}"
       dest: "{{app.dest}}"
       
+  - name: "app - download composer.phar"
+    script: "files/composer.sh"
+    args:
+      creates: "/usr/local/bin/composer"
+
+  - name: "app - symlink composer"
+    file:
+      src: "/usr/local/bin/composer.phar"
+      dest: "/usr/local/bin/composer"
+      state: link
+
+  - name: "app - composer install"          
+    composer:
+      working_dir: "{{app.dest}}"
+      no_dev: no
+      command: install
+
+  - name: "app - change user:group"
+    file:
+      dest: "{{app.dest}}"
+      state: directory
+      recurse: yes
+      owner: "www-data"
+      group: "www-data"
+
+  - name: "app - change symlink"
+    file:
+      src: "{{app.dest}}"
+      dest: "/var/www/{{app.name}}/current"
+      state: link
+

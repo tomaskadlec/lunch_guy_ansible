@@ -115,4 +115,21 @@ Prepare directory layout similar to Capistrano/Capifony as depicted below.
 Use [git]() module to checkout the application (master branch). Store it
 in ``{{app.dest}}``.
 
+### Step 2 - composer install
 
+At first, [composer](http://getcomposer.org) must be installed, executable
+and in ``$PATH``. Install it in ``/usr/local/bin``.
+
+Run ``install`` command using [composer module](http://docs.ansible.com/ansible/composer_module.html).
+
+```
+- name: "app - composer install"
+  composer:
+    working_dir: "{{app.dest}}"
+    no_dev: no
+    command: install
+```
+
+Change ownership of application files, use ``www-data:www-data`` which are used for *php-fpm* and *nginx*. Use [file module](http://docs.ansible.com/ansible/file_module.html)
+
+As the last step, change ``current`` symlink to the new release.

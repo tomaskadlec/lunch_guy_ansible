@@ -1,0 +1,58 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: HagUlHWWz6TJpQtWYPxmaXCPPIWxzg9h
+
+    app_name: "Obědář"
+    analytics: "None"
+    lunch_guy:
+        contributors:
+            user: tomaskadlec
+            repository: lunch_guy
+        restaurants:
+            'U Pětníka':
+                'uri': 'http://www.drest.cz/u-petnika'
+                'parser': 'drest'
+            'Na Urale':
+                'uri': 'http://www.drest.cz/na-urale'
+                'parser': 'drest'
+            'Na Slamníku':
+                'uri': 'http://www.drest.cz/na-slamniku'
+                'parser': 'drest'
+            'U Topolů':
+                'uri': 'http://www.utopolu.cz/ajax/cs/menu/getmenu/0'
+                'parser': 'utopolu'
+            'U Profesora':
+                'uri': 'http://uprofesora.cz/'
+                'parser': 'uprofesora'
+            'Cesta časem':
+                'uri': 'http://www.cestacasem.cz/denni-nabidka/'
+                'parser': 'simigastro'
+            'Bistro Santinka':
+                'uri': 'http://www.santinka.cz/'
+                'parser': 'santinka'
+            'Pod Juliskou':
+                'uri': 'http://www.podjuliskou.cz/menu/'
+                'parser': 'podjuliskou'
+            'Pod Loubím':
+                'uri': 'http://www.podloubim.com/menu/'
+                'parser': 'podloubim'
+            'Studentský dům':
+                'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
+                'parser': 'suz'
+            'Pizzerie la fontanella':
+                'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=10'
+                'parser': 'suz'
+            'Masarykova kolej':
+                'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=5'
+                'parser': 'suz'
+        output:
+            stdout: yes
