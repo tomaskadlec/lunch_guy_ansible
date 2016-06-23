@@ -93,3 +93,21 @@ The Czech Republic. Following steps must be taken:
   * run ``composer install``,
   * set as current version if everything goes well.
 
+### Step 0 - directory layout
+
+Prepare directory layout similar to Capistrano/Capifony as depicted below.
+
+```
+.
+|-- current -> /var/www/obedar/releases/__RELEASE__
+|-- releases
+|   `-- __RELEASE__
+|       |-- app
+|       |-- bin
+|       |-- src
+|       |-- var
+|       |-- vendor
+|       `-- web
+`-- shared
+```
+

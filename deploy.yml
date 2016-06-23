@@ -62,3 +62,25 @@
         name: "nginx"
         state: "restarted"
 
+- name: "Deploy app"
+  hosts: [ "web" ]
+  tags: [ "deploy" ]
+  tasks:
+ 
+  - name: "app - directories"
+    file:
+      path: "/var/www/{{app.name}}/{{item}}"
+      state: directory
+    with_items:
+      - shared
+      - releases
+
+  - name: "app - get release name"
+    shell: "date +%s"
+    register: result
+
+  - name: "app - set release path"
+    set_fact:
+      app:
+        dest: "/var/www/{{app.name}}/releases/{{result.stdout}}"
+            
