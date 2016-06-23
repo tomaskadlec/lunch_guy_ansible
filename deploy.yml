@@ -1,0 +1,12 @@
+- name: "Install runtime"
+  hosts: [ "web" ]
+
+  vars:
+
+  tasks:
+    - name: "apt get install"
+      apt:
+        name: "{{item}}"
+      with_items: "{{runtime.software}}"
+
+

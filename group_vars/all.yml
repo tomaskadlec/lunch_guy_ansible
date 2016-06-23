@@ -1,0 +1,16 @@
+---
+
+runtime:
+  software:
+    - php5
+    - php5-imagick
+    - php5-json
+    - php5-fpm
+    - php5-gd
+    - php5-intl
+    - php5-mcrypt
+    - php5-mysqlnd
+    - php5-readline
+    - php5-tidy
+    - php5-xsl
+    - nginx
