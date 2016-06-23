@@ -45,3 +45,19 @@ web | success >> {
 }
 
 ```
+
+## Install required runtime software
+
+Use [apt module](http://docs.ansible.com/ansible/apt_module.html). Store list of
+required software in a variable. Variables may be stored in *inventory* but they
+are stored in dedicated files typically. These files are 
+
+  * ``group_vars/`` - valid for a whole group of hosts, file is named by the group;
+  * ``host_vars/`` - valid for a single host, file is named by the host.
+
+Required software packages are:
+
+```
+php5, php5-imagick, php5-json, php5-fpm, php5-gd, php5-intl, php5-mcrypt, php5-mysqlnd, php5-readline, php5-tidy, php5-xsl, nginx
+```
+
