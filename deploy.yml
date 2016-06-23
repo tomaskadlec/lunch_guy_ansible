@@ -9,7 +9,7 @@
 
 - name: "Configure runtime"
   hosts: [ "web" ]
-  tags: [ 'config' ]
+  tags: [ 'config', 'php' ]
   tasks:
 
   - name: "php - php.ini changes"
@@ -22,11 +22,43 @@
       - "{{runtime.php.configuration}}"
       - "{{runtime.php.files}}"
     notify:
-      - "php - restart php-fpm"
+      - "restart php-fpm"
 
   handlers:
-    - name: "php - restart php-fpm"
+    - name: "restart php-fpm"
       service:
         name: "php5-fpm"
         state: restarted
+
+
+- name: "Configure nginx"
+  hosts: [ "web" ]
+  tags: [ 'config', 'nginx' ]
+  tasks:
+
+  - name: "nginx - remove default configuration"
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: "nginx - create/update configuration"          
+    template:
+      src: "templates/nginx_app.conf"
+      dest: "/etc/nginx/sites-available/{{app.name}}"
+    notify: 
+      - "restart nginx"
+
+  - name: "nginx - enable configuration"
+    file:
+      src: "/etc/nginx/sites-available/{{app.name}}"
+      dest: "/etc/nginx/sites-enabled/{{app.name}}"
+      state: link
+    notify: 
+      - "restart nginx"
+
+  handlers:
+    - name: "restart nginx"
+      service:
+        name: "nginx"
+        state: "restarted"
 

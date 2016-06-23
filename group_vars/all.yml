@@ -1,5 +1,9 @@
 ---
 
+app:
+  name: obedar
+  version: ~
+
 runtime:
   software:
     - php5

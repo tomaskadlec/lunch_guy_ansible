@@ -61,3 +61,24 @@ Required software packages are:
 php5, php5-imagick, php5-json, php5-fpm, php5-gd, php5-intl, php5-mcrypt, php5-mysqlnd, php5-readline, php5-tidy, php5-xsl, nginx
 ```
 
+## Configure software
+
+Ansible provides modules that simplify inplace configuration changes as well as
+synchronization of configuration files.
+
+### Step 1: PHP configuration
+
+Changes in configuration are necessary. Application will fail otherwise. Use 
+[lineinfile](http://docs.ansible.com/ansible/lineinfile_module.html) module.
+
+  * ``date.timezone`` -> Europe/Prague
+  * ``memory_limit`` -> 256M
+  * ``max_execution_time`` -> 120 (seconds)
+
+``php-fpm`` must be restarted if configuration changes. Use a handler.
+
+### Step 2: nginx configuration
+
+Configuration file must be provided if no such exists. Allow its reuse using
+[template](http://docs.ansible.com/ansible/template_module.html) module. File 
+should be located at ``templates/nginx_app.conf``.
