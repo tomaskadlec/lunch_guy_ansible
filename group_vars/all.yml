@@ -14,3 +14,13 @@ runtime:
     - php5-tidy
     - php5-xsl
     - nginx
+      
+  php:
+    configuration:
+      - { pattern: "^[;]?memory_limit" , line: "memory_limit = 256M" }
+      - { pattern: "^[;]?max_execution_time" , line: "max_execution_time = 120" }
+      - { pattern: "^[;]?date.timezone" , line: "date.timezone = Europe/Prague" }
+    files:
+      - /etc/php5/fpm/php.ini
+      - /etc/php5/cli/php.ini
+

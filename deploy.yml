@@ -1,12 +1,32 @@
 - name: "Install runtime"
   hosts: [ "web" ]
-
-  vars:
-
   tasks:
     - name: "apt get install"
       apt:
         name: "{{item}}"
       with_items: "{{runtime.software}}"
 
+
+- name: "Configure runtime"
+  hosts: [ "web" ]
+  tags: [ 'config' ]
+  tasks:
+
+  - name: "php - php.ini changes"
+    lineinfile:
+      dest: "{{item[1]}}"
+      regexp: "{{item[0].pattern}}"
+      line: "{{item[0].line}}"
+      state: present
+    with_nested:
+      - "{{runtime.php.configuration}}"
+      - "{{runtime.php.files}}"
+    notify:
+      - "php - restart php-fpm"
+
+  handlers:
+    - name: "php - restart php-fpm"
+      service:
+        name: "php5-fpm"
+        state: restarted
 
