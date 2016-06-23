@@ -89,8 +89,7 @@ Deploy [Obedar]() a PHP application for retrieving lunch menus in Dejvice, Pragu
 The Czech Republic. Following steps must be taken:
 
   * checkout source code from git VCS,
-  * provide configuration,
-  * run ``composer install``,
+  * prepare composer and run ``composer install``,
   * set as current version if everything goes well.
 
 ### Step 0 - directory layout
@@ -110,4 +109,10 @@ Prepare directory layout similar to Capistrano/Capifony as depicted below.
 |       `-- web
 `-- shared
 ```
+
+### Step 1 - git checkout
+
+Use [git]() module to checkout the application (master branch). Store it
+in ``{{app.dest}}``.
+
 

@@ -84,3 +84,8 @@
       app:
         dest: "/var/www/{{app.name}}/releases/{{result.stdout}}"
             
+  - name: "app - git checkout"
+    git:
+      repo: "{{app.repo}}"
+      dest: "{{app.dest}}"
+      

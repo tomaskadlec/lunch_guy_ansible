@@ -2,6 +2,7 @@
 
 app:
   name: obedar
+  repo: https://github.com/tomaskadlec/lunch_guy.git
   version: ~
 
 runtime:
@@ -17,6 +18,7 @@ runtime:
     - php5-readline
     - php5-tidy
     - php5-xsl
+    - php5-curl
     - nginx
       
   php:
